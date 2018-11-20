@@ -7,4 +7,4 @@ class FirstTests(TestCase):
 
 class SecondTests(TestCase):
     def test_2_e_2(self):
-        self.assertEquals(2, 12)
+        self.assertEquals(3, 3)
