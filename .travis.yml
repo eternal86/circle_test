@@ -3,7 +3,7 @@ python:
   - "3.5"
 
 before_install:
-- mv development_settings.py settings.py
+- mv myproject/development_settings.py myproject/settings.py
 
 # command to install dependencies
 install:
