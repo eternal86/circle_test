@@ -33,6 +33,13 @@ steps:
       print('Found Django project in', project_location)
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
+
+- script: |
+    sudo apt-get install postgresql postgresql-client
+    export PGPASSWORD=''; psql -h '127.0.0.1' -U 'pgsql' -d 'base name' -c 'command'
+    
+  displayName: 'Install postgres'
+
 - script: |
     python -m pip install --upgrade pip setuptools wheel
     pip install -r requirements.txt
@@ -41,7 +48,7 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
-    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
+    python manage.py test product -v 3 --failfast --noinput --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input 
   condition: succeededOrFailed()
   displayName: 'Run tests'
 
