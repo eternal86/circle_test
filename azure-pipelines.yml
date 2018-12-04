@@ -34,11 +34,9 @@ steps:
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
 - script: |
-    sudo apt-get install libldap2-dev slapd ldap-utils libsasl2-dev
     python -m pip install --upgrade pip setuptools wheel
     pip install -r requirements.txt
     pip install unittest-xml-reporting
-    mv shopfloor/development_settings.py shopfloor/settings.py
   displayName: 'Install prerequisites'
 
 - script: |
