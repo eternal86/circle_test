@@ -37,8 +37,7 @@ steps:
 
 - script: |
     sudo apt-get install postgresql postgresql-client
-    export PGPASSWORD=''; 
-    sudo -u postgres psql
+    export PGPASSWORD='123'; 
     
   displayName: 'Install postgres'
 
